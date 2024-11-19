@@ -1,5 +1,5 @@
 public class StringUtils{
-    public static String capitalize(String str) {
+    public static String chuanHoaTen(String str) {
         if (str == null || str.isEmpty()) {
             return str;
         }
@@ -11,5 +11,11 @@ public class StringUtils{
             sb.append(" ");
         }
         return sb.toString().trim();
+    }
+    public static String layHaiTruCaiDauCuaMa(String ma){
+        return ma.substring(0,2);
+    }
+    public static String[] tachThanhCacPhanBoiDauPhay(String data){
+        return data.split(",");
     }
 }
