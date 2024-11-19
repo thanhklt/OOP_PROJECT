@@ -12,7 +12,7 @@ public class StringUtils{
         }
         return sb.toString().trim();
     }
-    public static String layHaiTruCaiDauCuaMa(String ma){
+    public static String layHaiChuCaiDauCuaMa(String ma){
         return ma.substring(0,2);
     }
     public static String[] tachThanhCacPhanBoiDauPhay(String data){
