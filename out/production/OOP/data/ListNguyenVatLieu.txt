@@ -1,0 +1,20 @@
+NL01,cua,5
+NL02,nam dong co,3
+NL03,hanh,2
+NL04,ca chua,2
+NL05,pho mai,2
+NL06,dua,2
+NL07,tom,5
+NL08,muc,5
+NL09,vit,5
+NL10,ga,5
+NL11,toi,1
+NL12,cai thia,2
+NL13,cu hanh,1
+NL14,ca,5
+NL15,xoi,2
+NL16,thit luoc,5
+NL17,dau hu,5
+DC01,choi,3
+DC02,khan,3
+DC03,cay lau nha,3

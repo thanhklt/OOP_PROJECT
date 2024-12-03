@@ -1,5 +1,5 @@
 public interface IThemSuaXoa {
-    void them();
-    void sua();
-    void xoa();
+    void themThongTin();
+    void suaThongTin(String maSo);
+    void xoaThongTin(String maSo);
 }

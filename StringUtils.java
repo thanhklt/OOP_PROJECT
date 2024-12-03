@@ -15,7 +15,5 @@ public class StringUtils{
     public static String layHaiChuCaiDauCuaMa(String ma){
         return ma.substring(0,2);
     }
-    public static String[] tachThanhCacPhanBoiDauPhay(String data){
-        return data.split(",");
-    }
+    public static String[] tachThanhCacPhanBoiDauPhay(String line){ return line.split(","); }
 }

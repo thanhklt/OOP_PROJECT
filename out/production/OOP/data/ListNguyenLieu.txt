@@ -1,0 +1,17 @@
+NL01,cua,5.0
+NL02,nam dong co,3.0
+NL03,hanh,2.0
+NL04,ca chua,2.0
+NL05,pho mai,2.0
+NL06,dua,2.0
+NL07,tom,5.0
+NL08,muc,5.0
+NL09,vit,5.0
+NL10,ga,5.0
+NL11,toi,1.0
+NL12,cai thia,2.0
+NL13,cu hanh,1.0
+NL14,ca,5.0
+NL15,xoi,2.0
+NL16,thit luoc,5.0
+NL17,dau hu,5.0
