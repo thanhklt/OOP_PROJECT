@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,7 @@ public class LoiDatBan implements INhapXuat {
     Scanner sc = new Scanner(System.in);
     private String maDatBan;
     private int soLuongKhachHang;
-    private KhachHang khachHangDaiDien;
+    private KhachHang khachHang;
     private int soLuongMonAn;
     private ArrayList<String> dsMonAn;
     private double tongTienMonAn;
@@ -20,7 +21,7 @@ public class LoiDatBan implements INhapXuat {
     public LoiDatBan() {
         maDatBan = "";
         soLuongKhachHang = 0;
-        khachHangDaiDien = new KhachHang();
+        khachHang = new KhachHang();
         soLuongMonAn = 0;
         dsMonAn = new ArrayList<>();
         banAn = new BanAn();
@@ -28,10 +29,10 @@ public class LoiDatBan implements INhapXuat {
         tongTienMonAn = 0;
     }
 
-    public LoiDatBan(String maDatBan, int soLuongKhachHang, KhachHang khachHangDaiDien, int soLuongMonAn, ArrayList<String> dsMonAn, double tongTienMonAn, BanAn banAn, String maNhanVien) {
+    public LoiDatBan(String maDatBan, int soLuongKhachHang, KhachHang khachHang, int soLuongMonAn, ArrayList<String> dsMonAn, double tongTienMonAn, BanAn banAn, String maNhanVien) {
         this.maDatBan = maDatBan;
         this.soLuongKhachHang = soLuongKhachHang;
-        this.khachHangDaiDien = khachHangDaiDien;
+        this.khachHang = khachHang;
         this.soLuongMonAn = soLuongMonAn;
         this.dsMonAn = dsMonAn;
         this.tongTienMonAn = tongTienMonAn;
@@ -48,7 +49,7 @@ public class LoiDatBan implements INhapXuat {
             setMaDatBan(sc.nextLine());
 
         System.out.println("Mời nhập thông tin khách hàng: ");
-        this.khachHangDaiDien.nhapThongTin(sc);
+        this.khachHang.nhapThongTin(sc);
         System.out.println("Mời nhập số lượng khách hàng: ");
         this.soLuongKhachHang = sc.nextInt();
         sc.nextLine();
@@ -81,7 +82,7 @@ public class LoiDatBan implements INhapXuat {
     @Override
     public void xuatThongTin() {
         System.out.println("Mã đặt bàn là: " + getMaDatBan());
-        khachHangDaiDien.xuatThongTin();
+        khachHang.xuatThongTin();
         System.out.println("Số lượng khách hàng là: " + getSoLuongKhachHang());
         System.out.println("Số lượng món ăn là: " + getSoLuongMonAn());
         System.out.println("Danh sách món ăn lần lượt là: ");
@@ -90,7 +91,7 @@ public class LoiDatBan implements INhapXuat {
         }
         System.out.println("Mã bàn ăn là : " + getbanAn().getMaBan());
         System.out.println("Mã nhân viên phụ trách là: " + getMaNhanVien());
-        System.out.println("Tổng tiền phải trả là: " + getTongTienMonAn());
+        System.out.println("Tổng tiền phải trả là: $" + getTongTienMonAn());
     }
 
     // 3. Hàm thêm món ăn
@@ -178,7 +179,7 @@ public class LoiDatBan implements INhapXuat {
             if (price != null) { // Ensure it is not null
                 this.tongTienMonAn += price;
             } else {
-                System.out.println("Món ăn " + dsMonAn.get(i) + " không có trong menu.");
+                System.out.println("Menu item " + dsMonAn.get(i) + " not found in dsMenu.");
             }
         }
     }
@@ -223,7 +224,7 @@ public class LoiDatBan implements INhapXuat {
     }
 
     public void setkhachHang(KhachHang khachHang) {
-        this.khachHangDaiDien = khachHang;
+        this.khachHang = khachHang;
     }
 
     public void setSoLuongMonAn(int soLuongMonAn) {
@@ -249,7 +250,7 @@ public class LoiDatBan implements INhapXuat {
     public int getSoLuongKhachHang() {return soLuongKhachHang;}
 
     public KhachHang khachHang() {
-        return khachHangDaiDien;
+        return khachHang;
     }
 
     public int getSoLuongMonAn() {

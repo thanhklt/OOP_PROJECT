@@ -12,10 +12,13 @@ public class PhucVu extends NhanVien {
         soLuong++;
     }
 
-    public PhucVu(String maNhanVien, String hoVaTen, String gioiTinh, int ngaySinh, int thangSinh, int namSinh, int ngayKiHopDong, int thangKiHopDong, int namKiHopDong, int ngayHetHopDong, int thangHetHopDong, int namHetHopDong, double gioCong, ArrayList<String> DSBanPhuTrach) {
+    public PhucVu(String maNhanVien, String hoVaTen, String gioiTinh, int ngaySinh, int thangSinh, int namSinh, int ngayKiHopDong, int thangKiHopDong, int namKiHopDong, int ngayHetHopDong, int thangHetHopDong, int namHetHopDong, double gioCong) {
         super(maNhanVien, hoVaTen, gioiTinh, ngaySinh, thangSinh, namSinh, ngayKiHopDong, thangKiHopDong, namKiHopDong, ngayHetHopDong, thangHetHopDong, namHetHopDong, gioCong);
-        this.DSBanPhuTrach = DSBanPhuTrach;
         soLuong++;
+        DSBanPhuTrach = new ArrayList<>();
+        String maBan = "BA" + super.getMaNhanVien().substring(2);
+        this.DSBanPhuTrach.add(maBan);
+
     }
 
     // 1. Nhap
@@ -23,13 +26,15 @@ public class PhucVu extends NhanVien {
     public void nhapThongTin(Scanner sc) {
         super.nhapThongTin(sc);
         int n = 0;    // Moi nhan vien phu trach 2 ban
-        String maBan;
-        while (n != 2) {
-            System.out.printf("Nhập mã bàn thứ %d của nhân viên phụ trách: \n", n + 1);  //n chay tu 0
-            maBan = sc.nextLine();
-            this.DSBanPhuTrach.add(maBan); // Constructor da khoi tao roi;
-            n++;
-        }
+//        String maBan;
+//        while (n != 2) {
+//            System.out.printf("Nhập mã bàn thứ %d của nhân viên phụ trách: \n", n + 1);  //n chay tu 0
+//            maBan = sc.nextLine();
+//            this.DSBanPhuTrach.add(maBan); // Constructor da khoi tao roi;
+//            n++;
+//        }
+        String maBan = "BA" + super.getMaNhanVien().substring(2);
+        this.DSBanPhuTrach.add(maBan);
     }
 
     // 2. Xuat
@@ -45,31 +50,31 @@ public class PhucVu extends NhanVien {
     }
 
     // 3. Sua
-    @Override
-    public void menuThuocTinh() {
-        super.menuThuocTinh();
-        System.out.println("8. Mã bàn ăn nhân viên phụ trách");
-    }
+//    @Override
+//    public void menuThuocTinh() {
+//        super.menuThuocTinh();
+//        System.out.println("8. Mã bàn ăn nhân viên phụ trách");
+//    }
 
-    @Override
-    public void choiceBrain(int choice) {
-        Scanner sc = new Scanner(System.in);
-        super.choiceBrain(choice);
-        if (choice == 8) {
-            DSBanPhuTrach.clear();
-            // Phai so luong ban phu trach moi
-            System.out.print("Nhập số lượng bàn nhân viên phụ trách: ");
-            int n = sc.nextInt(); sc.nextLine();
-            if (n>=0) {
-                for (int i = 0; i < n; i++) {
-                    System.out.printf("Mã bàn thứ %d của nhân viên phụ trách: ", i + 1);
-                    String maBan = sc.nextLine();
-                    DSBanPhuTrach.add(maBan);
-                }
-            }
-
-        }
-    }
+//    @Override
+//    public void choiceBrain(int choice) {
+//        Scanner sc = new Scanner(System.in);
+//        super.choiceBrain(choice);
+//        if (choice == 8) {
+//            DSBanPhuTrach.clear();
+//            // Phai so luong ban phu trach moi
+//            System.out.print("Nhập số lượng bàn nhân viên phụ trách: ");
+//            int n = sc.nextInt(); sc.nextLine();
+//            if (n>=0) {
+//                for (int i = 0; i < n; i++) {
+//                    System.out.printf("Mã bàn thứ %d của nhân viên phụ trách: ", i + 1);
+//                    String maBan = sc.nextLine();
+//                    DSBanPhuTrach.add(maBan);
+//                }
+//            }
+//
+//        }
+//    }
 
     @Override
     public void suaThongTin(Scanner sc) {
@@ -81,7 +86,7 @@ public class PhucVu extends NhanVien {
             System.out.print("Lựa chọn: ");
             choice = sc.nextInt();
             sc.nextLine();
-            this.choiceBrain(choice);
+            super.choiceBrain(choice);
         }
         while (choice != 0);
     }

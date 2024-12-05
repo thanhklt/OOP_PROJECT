@@ -4,8 +4,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class QuanLyCuaHang {
-    private static double doanhThu=0;
-    private static String doanhThuURL = "./data/doanhthu.txt";
     private static String matKhau ="";
     private static String matKhauURL = "./data/password.txt";
     private static String tenCuaHang = "Vui cười lên";
@@ -28,9 +26,8 @@ public class QuanLyCuaHang {
         System.out.println("5/ Quản lý nguyên liệu");
         System.out.println("6/ Đổi tên cửa hàng");
         System.out.println("7/ Đổi địa chỉ cửa hàng");
-        System.out.println("8/ Tính doanh thu cửa hàng");
-        System.out.println("9/ Đổi mật khẩu");
-        System.out.println("10/ Xem mật khẩu");
+        System.out.println("8/ Đổi mật khẩu");
+        System.out.println("9/ Xem mật khẩu");
         System.out.println("0/ Thoát");
     }
 
@@ -43,29 +40,7 @@ public class QuanLyCuaHang {
         diaChiCuaHang = sc.nextLine();
     }
 
-    public static void docFileDoanhThu(){
-        try(Scanner sc = new Scanner(new FileReader(doanhThuURL))){
-            if(sc.hasNextLine()){
-                doanhThu = Double.parseDouble(sc.nextLine());
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            System.out.println("Lỗi: Vui lòng kiểm tra lại file doanh thu.");
-        }
-    }
-    public static void ghiFileDoanhThu(){
-        try(PrintWriter pw = new PrintWriter(new FileWriter(doanhThuURL))){
-            pw.println(doanhThu);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            System.out.println("Lỗi: Vui lòng kiểm tra lại file doanh thu.");
-        }
-    }
-//    public static void xuatDoanhThu() {
-//        System.out.println("Doanh thu cửa hàng hiện tại: " +doanhThu);
-//    }
+
     public static void doiMatKhau(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mật khẩu mới: ");
@@ -108,7 +83,9 @@ public class QuanLyCuaHang {
             System.out.print("Nhập mã nhân viên muốn tìm: ");
             String maNV = sc.nextLine();
             NhanVien a = dsNhanVien.timNVTheoMaSo(maNV);
-            a.xuatThongTin();
+            if (a!=null)
+                a.xuatThongTin();
+            else System.out.println("Lỗi: Không tìm thấy mã nhân viên.");
         }
         else if (choice == 3){
             Scanner sc = new Scanner(System.in);
@@ -135,7 +112,7 @@ public class QuanLyCuaHang {
             Scanner sc = new Scanner(System.in);
             System.out.print("Nhập mã nhân viên muốn tính lương: ");
             String maNV = sc.nextLine();
-            dsNhanVien.tinhLuongNhanVienTheoMa(maNV);
+            System.out.println("Lương nhân viên: $"+ dsNhanVien.tinhLuongNhanVienTheoMa(maNV));
         }
         else if (choice == 9){
             dsNhanVien.xuatBangLuongNhanVien();
@@ -224,7 +201,7 @@ public class QuanLyCuaHang {
             String maBan = sc.nextLine();
             BanAn a = dsBanAn.timBanAnTheoMa(maBan);
             if (a!=null)
-                a.suaThongTin(sc, dsNhanVien);
+                a.suaThongTin(sc);
             else
                 System.out.println("Lỗi: Không tìm thây mã bàn");
         }
@@ -409,12 +386,12 @@ public class QuanLyCuaHang {
             System.out.println("Mời nhập mã số lời đặt bàn: ");
             String Ma = sc.nextLine();
             dsLoiDatBan.xoaThongTin(Ma);
+            dsLoiDatBan.tinhTongDoanhThu();
         }
         else if(choice == 4) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Mời nhập mã lời đặt bàn cần tìm: ");
             String maLoiDatBan = sc.nextLine();
-            sc.nextLine();
             if (dsLoiDatBan.timLoiDatBan(maLoiDatBan) != null) {
                 dsLoiDatBan.inLoiDatBan(maLoiDatBan);
             }
@@ -424,7 +401,7 @@ public class QuanLyCuaHang {
         }
         else if(choice == 5) {
             dsLoiDatBan.tinhTongDoanhThu();
-            System.out.println(dsLoiDatBan.getTongDoanhThu());
+            System.out.println("Doanh thu trong ngay la: $" + dsLoiDatBan.getTongDoanhThu());
         }
         else if (choice == 6) {
             dsLoiDatBan.inDanhSachDatBan();
@@ -433,9 +410,7 @@ public class QuanLyCuaHang {
             dsLoiDatBan.capNhatData(dsBanAn, dsMonAn.getDsMonAn());
         }
         else if(choice == 8) {
-            if (dsLoiDatBan.capNhatFile()){
-                System.out.println("Cập nhật file thành công.");
-            }
+            dsLoiDatBan.capNhatFile();
         }
     }
 
@@ -454,7 +429,6 @@ public class QuanLyCuaHang {
     }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        docFileDoanhThu(); // Lay doanh thu
         layMatKhauTuFile(); // Lay mat khau
         int attemps = 0;
         String idManager;
@@ -479,11 +453,17 @@ public class QuanLyCuaHang {
         }
 
         // Viết code chính
-        int choice;
+        int choice = 0;
         do{
             menuChucNangChinh();
-            System.out.print("Nhập lựa chọn: "); choice = sc.nextInt();
-            sc.nextLine();
+            try {
+                System.out.print("Nhập lựa chọn: ");
+                choice = sc.nextInt();
+                sc.nextLine();
+            }
+            catch(Exception e){
+                System.out.println("Lỗi: Kiểu dữ liệu không hợp lệ.");
+            }
             if(choice == 1){
                 int nhanVienChoice;
                 do {
@@ -539,16 +519,9 @@ public class QuanLyCuaHang {
                 doiDiaChiCuaHang(sc);
             }
             else if (choice == 8){
-                for (LoiDatBan loiDatBan: dsLoiDatBan.getDsDatBan()){
-                    doanhThu += loiDatBan.getTongTienMonAn();
-                }
-                System.out.println("Doanh thu hiện tại: " + doanhThu);
-                ghiFileDoanhThu();
-            }
-            else if (choice == 9){
                 doiMatKhau();
             }
-            else if (choice==10){
+            else if (choice==9){
                 System.out.println("Mật khẩu hiện tại là: " + matKhau);
             }
         }while(choice != 0);

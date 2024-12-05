@@ -62,10 +62,6 @@ public class DanhSachNhanVien implements IThemSuaXoa{
                 nvMoi.nhapThongTin(sc);
                 dsNhanVien.add(nvMoi);
             }
-            if (timNVTheoMaSo(nvMoi.getMaNhanVien()) != null){
-                System.out.println("Lỗi: Mã nhân viên đã tồn tại");
-                return;
-            }
         }while(choice!=0);
     }
 
@@ -174,7 +170,7 @@ public class DanhSachNhanVien implements IThemSuaXoa{
                 }
             }
             else if (choice == 3){
-                System.out.println("Có tất cả " + LaoCong.xuatSoLuongLaoCong() + " quản lý:");
+                System.out.println("Có tất cả " + LaoCong.xuatSoLuongLaoCong() + " lao công:");
                 int i = 1;
                 for (NhanVien nv:dsNhanVien){
                     if (nv instanceof LaoCong){
@@ -308,26 +304,19 @@ public class DanhSachNhanVien implements IThemSuaXoa{
                             ngayKiHopDong, thangKiHopDong, namKiHopDong,
                             ngayHetHopDong, thangHetHopDong, namHetHopDong, gioCong, capBac);
                 } else if (loaiNhanVien.equals("TT")) {
-                    nvMoi = new LaoCong(maNhanVien, tenNhanVien, gioiTinh, ngaySinh, thangSinh, namSinh,
+                    nvMoi = new TiepTan(maNhanVien, tenNhanVien, gioiTinh, ngaySinh, thangSinh, namSinh,
                             ngayKiHopDong, thangKiHopDong, namKiHopDong,
                             ngayHetHopDong, thangHetHopDong, namHetHopDong, gioCong);
                 } else if (loaiNhanVien.equals("PV")) {
                     ArrayList<String> dsBan = new ArrayList<>();
                     String banPhuTrach1 = null;
-                    String banPhuTrach2 = null;
                     if (dataThanhPhan.length == 14) {
                         banPhuTrach1 = dataThanhPhan[13];
                         dsBan.add(banPhuTrach1);
                     }
-                    if (dataThanhPhan.length>14){
-                        banPhuTrach1 = dataThanhPhan[13];
-                        banPhuTrach2 = dataThanhPhan[14];
-                        dsBan.add(banPhuTrach1);
-                        dsBan.add(banPhuTrach2);
-                    }
                     nvMoi = new PhucVu(maNhanVien, tenNhanVien, gioiTinh, ngaySinh, thangSinh, namSinh,
                             ngayKiHopDong, thangKiHopDong, namKiHopDong,
-                            ngayHetHopDong, thangHetHopDong, namHetHopDong, gioCong, dsBan);
+                            ngayHetHopDong, thangHetHopDong, namHetHopDong, gioCong);
                 }
                 this.dsNhanVien.add(nvMoi);
             }

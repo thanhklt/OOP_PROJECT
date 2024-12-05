@@ -11,10 +11,6 @@ public class DanhSachLoiDatBan implements IThemSuaXoa {
     private double tongDoanhThu = 0;
     Scanner sc = new Scanner(System.in);
 
-
-    public DanhSachLoiDatBan(){
-        capNhatFile();
-    }
     // 1. Thêm lời đặt bàn
     @Override
     public void themThongTin() {
@@ -121,7 +117,7 @@ public class DanhSachLoiDatBan implements IThemSuaXoa {
     }
 
     // 8. Cập nhật File
-    public boolean capNhatFile() {
+    public void capNhatFile() {
         try (FileWriter writer = new FileWriter("./data/ListLoiDatBan.txt")) {
             // Ghi từng lời đặt bàn
             for (LoiDatBan loi : dsDatBan) {
@@ -140,10 +136,9 @@ public class DanhSachLoiDatBan implements IThemSuaXoa {
             // Ghi tổng doanh thu ở dòng cuối cùng
             writer.write(String.valueOf(tongDoanhThu));
 
-            return true;
+            System.out.println("Cập nhật file thành công!");
         } catch (IOException e) {
             System.out.println("Lỗi khi ghi file: " + e.getMessage());
-            return false;
         }
     }
 
@@ -202,6 +197,8 @@ public class DanhSachLoiDatBan implements IThemSuaXoa {
                 // Thêm lời đặt bàn vào danh sách
                 dsDatBan.add(loiDatBan);
             }
+
+            System.out.println("Cập nhật dữ liệu thành công!");
         } catch (FileNotFoundException e) {
             System.out.println("Không tìm thấy file: " + filePath);
         } catch (Exception e) {
@@ -219,6 +216,9 @@ public class DanhSachLoiDatBan implements IThemSuaXoa {
     }
 
     // Getter và Setter
+    DanhSachLoiDatBan() {
+        tongDoanhThu = 0;
+    }
 
     DanhSachLoiDatBan(ArrayList<LoiDatBan> dsDatBan, double tongDoanhThu) {
         this.dsDatBan = dsDatBan;

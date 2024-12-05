@@ -1,10 +1,10 @@
-MA01,Súp cua,23,2,cua,0.1,nấm đông cô,0.05
-MA02,Cá sốt cà,21,3,cá,1,hành,0.1,cà chua,0.1
-MA03,Tôm trái dứa,21,3,tôm,0.5,dứa,0.7,phô mai,0.2
-MA04,Vịt quay Bắc Kinh,21,2,vịt,2,nấm đông cô,0.2
-MA05,Gà sốt nước mắm tỏi,21,2,gà,2,tỏi,0.2
-MA06,Nấm đông cô xào cải thìa,21,2,nấm đông cô,1,cải thìa,1
-MA07,Mực xào sa tế,19,2,mực,1,củ hành,0.2
-MA08,Lẩu thái,21,4,tôm,0.5,mực,0.5,cá,0.5,rau,1
-MA09,Gà không lối thoát,21,2,gà,2,xôi,1
-MA10,Bún đậu mắm tôm,21,3,bún,1,thịt luộc,1,đậu hũ,1
+MA01,Súp cua,23.0,2,nấm đông cô,0.05,cua,0.1
+MA02,Cá sốt cà,21.0,3,hành,0.1,cà chua,0.1,cá,1.0
+MA03,Tôm trái dứa,21.0,3,phô mai,0.2,dứa,0.7,tôm,0.5
+MA04,Vịt quay Bắc Kinh,21.0,2,vịt,2.0,nấm đông cô,0.2
+MA05,Gà sốt nước mắm tỏi,21.0,2,gà,2.0,tỏi,0.2
+MA06,Nấm đông cô xào cải thìa,21.0,2,cải thìa,1.0,nấm đông cô,1.0
+MA07,Mực xào sa tế,19.0,2,mực,1.0,củ hành,0.2
+MA08,Lẩu thái,21.0,4,rau,1.0,mực,0.5,tôm,0.5,cá,0.5
+MA09,Gà không lối thoát,21.0,2,gà,2.0,xôi,1.0
+MA10,Bún đậu mắm tôm,21.0,3,bún,1.0,thịt luộc,1.0,đậu hũ,1.0

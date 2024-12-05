@@ -3,4 +3,4 @@ LDB02,BA02,1,Gà không lối thoát,2,23,Thanh,21.0,NV02
 LDB03,BA03,3,Súp cua,Bún đậu mắm tôm,Lẩu thái,1,1,Hau,65.0,NV03
 LDB04,BA04,1,Tôm trái dứa,10,2,Thanh,21.0,NV04
 LDB05,BA05,2,Lẩu thái,Súp cua,3,99,Bảo,44.0,NV05
-195.0
+237.0

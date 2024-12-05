@@ -59,10 +59,10 @@ public class MonAn implements INhapXuat {
         DecimalFormat df = new DecimalFormat("#.00");
         System.out.println("Mã món ăn: " + maMonAn);
         System.out.println("Tên món ăn: " + tenMonAn);
-        System.out.println("Danh sách nguyên liệu:");
         String giaMonAnDaFormat = df.format(giaMonAn);
         System.out.println("Giá món ăn: $" + giaMonAnDaFormat);
         int i = 1;
+        System.out.println("Danh sách nguyên liệu:");
         for (String key : this.nguyenLieuMonAn.keySet()) {
             System.out.println("Nguyên liêu thứ " + i);
             System.out.println(key + ": " + this.nguyenLieuMonAn.get(key));

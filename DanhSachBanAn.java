@@ -49,7 +49,7 @@ public class DanhSachBanAn implements IThemSuaXoa{
         return banRoi;
     }
     public int soLuongBanAnHienTai(){
-        return this.dsBanAn.size();
+        return this.SOLUONGBANANTOIDA;
     }
     public void kiemTraSoLuongBanAnMoiLoai(){
         System.out.println("Số lượng bàn ăn nhà hàng hiện có: " + soLuongBanAnHienTai());
@@ -87,7 +87,7 @@ public class DanhSachBanAn implements IThemSuaXoa{
         BanAn ba = timBanAnTheoMa(maBan);
         Scanner sc = new Scanner(System.in);
         if (ba != null) {
-            ba.suaThongTin(sc, dsNV);
+            ba.suaThongTin(sc);
         } else {
             System.out.println("Không tìm thấy bàn ăn.");
         }
@@ -112,6 +112,7 @@ public class DanhSachBanAn implements IThemSuaXoa{
             if (SOLUONGBANANTOIDA > soLuongMoi ){
                 throw new IOException("Lỗi: Số lượng bàn ăn mới bé hơn số lượng bàn ăn đã có");
             }
+            SOLUONGBANANTOIDA = soLuongMoi;
         }
         catch(IOException e){
             System.out.println(e.getMessage());

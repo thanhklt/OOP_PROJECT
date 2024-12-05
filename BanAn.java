@@ -49,48 +49,47 @@ public class BanAn implements INhapXuat{
     void menuThuocTinh(){
         System.out.println("-------Bảng thuộc tính--------");
         System.out.println("1/ Mã bàn");
-        System.out.println("2/ Nhân viên phụ trách");
         System.out.println("0/ Thoát");
     }
-    public void choiceBrain(int choice, DanhSachNhanVien dsNV){
+    public void choiceBrain(int choice){
         Scanner sc = new Scanner(System.in);
         if (choice == 1){
             System.out.print("Nhập mã bàn mới: ");
             this.maBan = sc.nextLine();
         }
-        else if (choice == 2){
-            if (!this.tinhTrangBan){
-                System.out.println("Lỗi: Bàn đang trống");
-            }
-            else{
-                System.out.print("Nhập mã nhân viên phục vụ: ");
-                String maNVPhucVu = sc.nextLine();
-                if (!StringUtils.layHaiChuCaiDauCuaMa(maNVPhucVu).equals("PV")){
-                    System.out.println("Lỗi: Mã nhân viên không phải của phục vụ");
-                }
-                else {
-                    PhucVu nvPhucVu = (PhucVu) dsNV.timNVTheoMaSo(maNVPhucVu);
-                    if (nvPhucVu == null) {
-                        System.out.println("Lỗi: Không tìm thấy mã số");
-                    } else {
-                        if (nvPhucVu instanceof PhucVu && nvPhucVu.kiemTraNhanVienCoRanhKhong()) {
-                            this.maNhanVienPhuTrach = nvPhucVu.getMaNhanVien();
-                            System.out.println("Đã thêm nhân viên "+nvPhucVu.getMaNhanVien()+" quản lý bàn");
-                        } else {
-                            System.out.println("Lỗi: Không có nhân viên phục vụ rảnh");
-                        }
-                    }
-                }
-            }
-        }
+//        else if (choice == 2){
+//            if (!this.tinhTrangBan){
+//                System.out.println("Lỗi: Bàn đang trống");
+//            }
+//            else{
+//                System.out.print("Nhập mã nhân viên phục vụ: ");
+//                String maNVPhucVu = sc.nextLine();
+//                if (!StringUtils.layHaiChuCaiDauCuaMa(maNVPhucVu).equals("PV")){
+//                    System.out.println("Lỗi: Mã nhân viên không phải của phục vụ");
+//                }
+//                else {
+//                    PhucVu nvPhucVu = (PhucVu) dsNV.timNVTheoMaSo(maNVPhucVu);
+//                    if (nvPhucVu == null) {
+//                        System.out.println("Lỗi: Không tìm thấy mã số");
+//                    } else {
+//                        if (nvPhucVu instanceof PhucVu && nvPhucVu.kiemTraNhanVienCoRanhKhong()) {
+//                            this.maNhanVienPhuTrach = nvPhucVu.getMaNhanVien();
+//                            System.out.println("Đã thêm nhân viên "+nvPhucVu.getMaNhanVien()+" quản lý bàn");
+//                        } else {
+//                            System.out.println("Lỗi: Không có nhân viên phục vụ rảnh");
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
-    public void suaThongTin(Scanner sc, DanhSachNhanVien dsNV){
+    public void suaThongTin(Scanner sc){
         int choice;
         do{
             menuThuocTinh();
             System.out.print("Lựa chọn: ");
             choice=sc.nextInt(); sc.nextLine();
-            choiceBrain(choice,dsNV);
+            choiceBrain(choice);
         }while(choice!=0);
     }
 
